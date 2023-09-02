@@ -1,0 +1,5 @@
+beautifulsoup4==4.12.2
+pandas==2.0.3
+PyGithub
+psycopg2-binary
+Requests==2.31.0
