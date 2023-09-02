@@ -1,58 +1,50 @@
+# GitHub Data Analytics Project Deployment Guide
 
-# Welcome to your CDK Python project!
+## Overview
 
-This is a blank project for CDK development with Python.
+This repository contains instructions and resources for deploying the GitHub Data Analytics (GDA) project infrastructure on Amazon Web Services (AWS). The GDA project focuses on collecting, analyzing, and visualizing data from GitHub repositories.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Deployment Workflow
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+The project's deployment workflow involves the following components:
 
-To manually create a virtualenv on MacOS and Linux:
+1. **AWS CloudWatch Triggers**: AWS CloudWatch is used to schedule events that trigger the Lambda function at regular intervals (daily, weekly, and monthly).
 
-```
-$ python -m venv .venv
-```
+2. **AWS Lambda Function**: The Lambda function contains the core logic for data extraction, transformation, and loading (ETL). It is deployed using a Docker image stored in Amazon Elastic Container Registry (ECR).
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
+3. **ECR Docker Image**: The ECR image is created from a Docker image built locally. This image includes all the necessary dependencies for the ETL process.
 
-```
-$ source .venv/bin/activate
-```
+4. **GitHub API Communication**: The ETL code communicates with the GitHub V3 REST API to fetch data from GitHub repositories.
 
-If you are a Windows platform, you would activate the virtualenv like this:
+5. **AWS RDS Database**: An Amazon RDS instance hosts the PostgreSQL database where the transformed data is stored.
 
-```
-% .venv\Scripts\activate.bat
-```
+6. **Power BI Integration**: The PostgreSQL database is connected to a Power BI dashboard for data visualization.
 
-Once the virtualenv is activated, you can install the required dependencies.
+## Challenges Faced
 
-```
-$ pip install -r requirements.txt
-```
+During the deployment of the project, several challenges were encountered and overcome:
 
-At this point you can now synthesize the CloudFormation template for this code.
+1. **PyGitHub Package Compatibility**: The PyGitHub package, required for interacting with the GitHub API, is not available in the AWS Lambda environment and is not compatible with Python 3.11. To solve this, a Docker container image was built locally and deployed to ECR, which is used by Lambda.
 
-```
-$ cdk synth
-```
+## Tools and Technologies Used
 
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
+Throughout the deployment process, several AWS services and tools were employed:
 
-## Useful commands
+- AWS CloudWatch: For scheduling Lambda function triggers.
+- AWS Lambda: For executing the ETL process.
+- AWS CLI: For creating and managing AWS resources via the command line.
+- Amazon Elastic Container Registry (ECR): For storing and deploying Docker container images.
+- Amazon RDS: For hosting the PostgreSQL database.
+- AWS Rules and Policies: For defining permissions and access control.
 
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
+## Getting Started
 
-Enjoy!
+To deploy the GitHub Data Analytics project on your AWS account, follow the step-by-step instructions in the [Deployment Guide](./deployment-guide.md).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
+## Acknowledgments
+
+Special thanks to [Name of the YouTuber or Mentor] for providing guidance and knowledge-sharing throughout this project.
