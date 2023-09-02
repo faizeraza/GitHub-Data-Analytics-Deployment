@@ -1,5 +1,6 @@
 # GitHub Data Analytics Project Deployment Guide
 
+<code> <img src="https://github.com/faizeraza/GitHub-Data-Analytics-Deployment/blob/main/GitHub%20Data%20Analytics%20(1).png"> </code>
 ## Overview
 
 This repository contains instructions and resources for deploying the GitHub Data Analytics (GDA) project infrastructure on Amazon Web Services (AWS). The GDA project focuses on collecting, analyzing, and visualizing data from GitHub repositories.
