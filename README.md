@@ -48,4 +48,4 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## Acknowledgments
 
-Special thanks to [Name of the YouTuber or Mentor] for providing guidance and knowledge-sharing throughout this project.
+Special thanks to @ for providing guidance and knowledge-sharing throughout this project.
