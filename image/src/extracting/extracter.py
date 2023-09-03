@@ -9,7 +9,7 @@ class Extracter:
     def __init__(self,url) -> None:
         pass
         self.url =url
-        self.auth = Auth.Token("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")
+        self.auth = Auth.Token("Your_Token")
         self.g = Github(auth=self.auth)
         self.repodf = {}
         self.userdf = {}
