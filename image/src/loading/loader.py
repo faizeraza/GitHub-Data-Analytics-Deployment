@@ -6,7 +6,7 @@ class Loader:
 
     def __init__(self) -> None:
         self.conn = psycopg2.connect(
-        host='gdadatawarehouse.cbynsst020lo.us-east-1.rds.amazonaws.com',
+        host='your hot address',
         database='postgres',
         user='postgres',
         password="MFRtfk#3003"
