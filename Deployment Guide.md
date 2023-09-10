@@ -38,10 +38,10 @@ Watch this video for a step-by-step guide on building and testing a Docker image
    ```shell
    docker build --platform linux/amd64 -t docker-image:test .
 3. Run the test locally using the following command:
-   '''shell
+    ```shell
    docker run -p 9000:8080 docker-image:test
 4. From a new terminal window, post an event to the Lambda function's endpoint using a curl command. Replace "daily" with "monthly" or "weekly" as needed.
-   '''shell
+   ```shell
    curl "http://localhost:9000/2015-03-31/functions/function/invocations" -d "{\"schedule\":\"daily\"}"
 5. Complete the Deployment Process
 For the rest of the deployment process, refer to the blogs and resources mentioned in the video.
